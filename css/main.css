@@ -473,14 +473,33 @@ section section:last-child {
    Footer styles
    ========================================================================== */
 
-.page-footer {
+/* .page-footer {
   background-color: var(--text-color);
   color: white;
   padding: 2rem 0;
   text-align: center;
   font-size: 0.9rem;
+} */
+
+.page-footer {
+  background-color: #f0f8ff;
+  color: #333;
+  padding: 1.5rem 0;
+  text-align: center;
+  font-size: 0.85rem;
+  border-top: 1px solid #e0e0e0;
 }
 
+.footer-content {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.page-footer p {
+  margin: 0;
+  line-height: 1.5;
+}
 
 /* ==========================================================================
   Certificates Section
