@@ -412,45 +412,68 @@
           <section>
             <h2 class="section-heading">Work Experience</h2>
             
+              <section>
+              <h3>
+                Software Engineer II at <a href="https://celltron.ae/" target="_blank">Celltron Intelligence</a>
+              </h3>
+              <p class="section-label">Nov 2025 – Present</p>
+              <p class="experience-type">Fulltime</p>
+              
+              <ul>
+                <li>Drove technical trade-offs and approvals; balanced performance, reliability, and delivery risks while enforcing
+                      development and testing standards.</li>
+                <li>Led cross-border engineering teams in Bangladesh and India; planned sprints, delegated feature ownership, enforced
+                      code reviews and CI to ensure predictable delivery..</li>
+                <li>Owned system architecture and technical direction; defined domain boundaries, API standards, data contracts, and
+                      deployment approach to enable independent service delivery.</li>
+                <li>Authored comprehensive developer runbooks and system architecture diagrams, standardizing the onboarding
+                      process and reducing knowledge silos across distributed engineering teams.</li>
+                  <li>Engineered the initial CI/CD pipelines using GitHub Actions, AWS and Docker, reducing deployment lead time
+                      from hours to minutes and enforcing automated testing gates for cross-border teams.</li>
+              </ul>
+            </section>
+          </section>
+
             <section>
               <h3>
                 Software Engineer at <a href="https://nexbell.com/" target="_blank">NexBell Inc.</a>
               </h3>
-              <p class="section-label">Nov 2023 – Present</p>
-              <p class="experience-type">Software Engineer</p>
+              <p class="section-label">Nov 2023 – Nov 2025</p>
+              <p class="experience-type">Fulltime</p>
               
               <ul>
-                <li>Refactored legacy code with SOLID principles and design patterns, boosting maintainability by 40%.</li>
-                <li>Optimized database queries by 17%, handle low-latency analytics, scale multi-vendor platform with 50+ stores.</li>
-                <li>Improved authentication and authorization workflows, leading to a 30% reduction in security errors and enhancing
-                      user experience.</li>
-                <li>Redesigned overall AWS cloud architecture, create and maintain CI/CD pipelines, reduced costs by 40% and
-                      increased development speed by 25%.</li>
+                <li>Decoupled a monolithic codebase into modular services using Strategy and Factory patterns, significantly reducing
+                      code coupling and facilitating easier unit testing.</li>
+                <li>Optimized critical MySQL queries by implementing composite indexing, reducing query execution time by 17% and
+                      supporting low-latency analytics for 50+ concurrent vendor stores.</li>
+                <li>Redesigned the AWS infrastructure by migrating idle resources to reserved and spot instances and implementing auto-scaling
+                      policies, resulting in a 40% reduction in monthly cloud costs.</li>
+                <li>Overhauled the authentication module by implementing OAuth2 and JWT with role-based access control (RBAC),
+                      eliminating common security vulnerabilities and streamlining the user login flow.</li>
               </ul>
             </section>
             
             <section>
               <h3>
-                Python Software Developer at <a href="https://drive.google.com/file/d/1pOaH8Wfm1yJeQvOxnzaiGGEgck_xLKg3/view?usp=drive_link" target="_blank">Eve Healthcare Center</a>
+                Software Developer at <a href="https://www.linkedin.com/company/iitbd/" target="_blank">Innovative IT</a>
               </h3>
-              <p class="section-label">Sept 2023 – Nov 2023</p>
-              <p class="experience-type">Internship</p>
+              <p class="section-label">Oct 2022 – Oct 2023</p>
+              <p class="experience-type">Freelance</p>
               
               <ul>
-                <li>Enhanced platform search efficiency, boosting user search success rates by 15%.</li>
-                <li>Implemented real-time in-app chat with WebSocket, increasing user engagement and retention by 30%.</li>
-                <li>Optimized 22% of patient dashboard APIs, cutting database queries and reducing response times by 1 second.</li>
-                <li>Integrated doctor dashboard and analytics, improving data access by 20% and data-driven decisions by 15%.</li>
+                <li>Engineered custom Django backends for diverse client projects, implementing PostgreSQL/MySQL schemas designed for high data integrity and scalability across web and mobile platforms.</li>
+                <li>Architected robust background task pipelines using Celery and Redis to handle resource-intensive operations (automated reporting, multi-source data sync, and transactional emails), significantly improving frontend responsiveness by offloading non-blocking tasks.</li>
+                <li>Developed and documented production-ready RESTful APIs using Django Rest Framework (DRF), incorporating secure authentication patterns and efficient serialization logic to minimize payload sizes and latency.</li>
+                <li>Conducted bottleneck analysis and optimized legacy database queries through indexing and query-set optimization, achieving measurable improvements in system stability and reducing average API response times.</li>
               </ul>
             </section>
-          </section>
 
           <section>
             <h2 class="section-heading">Projects</h2>
             
 <section>
   <h3>
-    <a href="https://github.com/Mahboob-A/algocode/" target="_blank">Algocode - DSA Platform Just Like Leetcode</a>
+    <a href="https://github.com/Mahboob-A/algocode/" target="_blank">Algocode - Distributed Code Evaluation System</a>
   </h3>
   
   <div class="project-meta">
@@ -487,11 +510,14 @@
   <p class="project-idea">A microservices solution for DSA problem solving platform backend just like Leetcode built from scratch without any 3rd party solution.</p>
   
   <ul>
-    <li>Built Algocode, a backend for DSA challenges and coding contests, enabling code submission and testing similar to LeetCode.</li>
-    <li>Architected a loosely-coupled microservices system with SOLID principles and design patterns across Auth, Code
-            Manager, and RCE Engine (C++ judge), enabling independent scaling and maintainability.</li>
-    <li>Developed and optimized Code Manager Service to handle APIs for code submission, problem retrieval, result validation, rate limiting, and communication with the RCE Engine via a message broker.</li>
-    <li>Conceived and built RCE Engine Service, a custom RCE Engine, executing user code securely in Docker containers, mitigating risks like fork-bombs, and delivering accurate results (e.g., WA, AC, TLE) within 2.5 seconds.</li>
+    <li>Architected a loosely coupled backend comprising Auth, API Service, and RCE service, communicating via
+            asynchronous message queues (RabbitMQ) to handle high-concurrency submission spikes without blocking.</li>
+    <li>Engineered a custom C++ Judge (Remote Code Execution) that spins up ephemeral Docker containers for each
+            submission, isolating user code from the host OS to ensure security.</li>
+    <li>Implemented kernel-level constraints (using Docker Runtime options) to strictly limit CPU, Memory, and PIDs,
+            effectively preventing malicious attacks like fork-bombs and infinite loops.</li>
+    <li>Built the orchestration layer to manage the lifecycle of code submissions, from queuing and execution to result
+            validation (AC/WA/TLE), achieving a sub-2.5s turnaround for standard problem sets.</li>
   </ul>
   
   <div class="gallery main-gallery">
@@ -529,7 +555,7 @@
             
 <section>
   <h3>
-    <a href="https://github.com/Mahboob-A/Movio/" target="_blank">Movio - High-Performance VOD Platform in Microservices</a>
+    <a href="https://github.com/Mahboob-A/Movio/" target="_blank">Movio - VOD Platform in Microservices</a>
   </h3>
   
   <div class="project-meta">
@@ -560,10 +586,14 @@
   <p class="project-idea">A scalable microservices solution for video on demand platform with closed caption, DRM and data protection need just like YouTube.</p>
   
   <ul>
-    <li>Orchestrated a scalable YouTube-like backend with Django using microservices, supporting 1K+ daily requests.</li>
-    <li>Optimized video processing with Celery, FFmpeg, and AWS S3, reducing processing time by 30%.</li>
-    <li>Implemented Adaptive Bitrate Streaming (MPEG-DASH), cutting buffering incidents by 25%.</li>
-    <li>Secured content with DRM (PlayReady) and boosted delivery speed by 40% using Gcore CDN and containerizing the solution with Docker.</li>
+    <li>Architected an event-driven video processing pipeline using Celery and RabbitMQ, offloading resource-intensive
+            transcoding tasks (FFmpeg) from the main thread to prevent blocking.</li>
+    <li>Implemented MPEG-DASH and HLS protocols with multi-bitrate transcoding, ensuring smooth playback across
+            varying bandwidths and reducing client-side buffering events.</li>
+    <li>Fully containerized the microservices architecture using Docker, ensuring consistent runtime environments across
+            development and production stages.</li>
+    <li>Secured video assets using DRM (PlayReady) and optimized global delivery via CDN caching, reducing origin
+            server load and improving Time-To-First-Byte (TTFB) by 40%.</li>
   </ul>
   
   <div class="gallery main-gallery">
@@ -632,9 +662,12 @@
   <p class="project-idea">Live streaming solution for low latency video game streaming just like Twitch.</p>
   
   <ul>
-    <li>Led development of ProStream using WebRTC for low-latency live streaming, improving streaming responsiveness by 25%.</li>
-    <li>Developed ProStream backend with Django and DRF, implementing WebSocket chat and reducing database query time by 20%.</li>
-    <li>Managed AWS deployment with load balancing and auto-scaling, rate limiting, boosting platform scalability.</li>
+    <li>Engineered a Twitch-inspired streaming backend utilizing the Agora SD-RTNTM (Software Defined Real-time
+            Network) to deliver low-latency, one-to-many broadcasts with high throughput and global availability.</li>
+    <li>Implemented a robust security layer by building a Dynamic Token Server in Django, generating time-bound,
+            HMAC-signed access tokens for Agora channels to prevent unauthorized stream access and stream sniping.</li>
+    <li>Architected a high-concurrency chat interface using Django Channels (WebSockets) and Redis Pub/Sub, managing
+            real-time viewer interaction and metadata syncing (viewer counts, stream status) outside the media stream.</li>
   </ul>
   
 <div class="gallery main-gallery">
