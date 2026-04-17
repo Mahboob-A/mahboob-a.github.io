@@ -17,42 +17,82 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Fetch Medium feed and generate JSON
-        env:
-          RSS2JSON_API_KEY: ${{ secrets.RSS2JSON_API_KEY }}
         run: |
-          if [ -z "${RSS2JSON_API_KEY}" ]; then
-            echo "RSS2JSON_API_KEY secret is missing."
-            exit 1
-          fi
+          python - <<'PY'
+          import json
+          import re
+          import urllib.request
+          import xml.etree.ElementTree as ET
+          from datetime import datetime, timezone
 
-          RSS_URL="https://medium.com/feed/@imehboob"
-          ENCODED_RSS_URL=$(printf '%s' "${RSS_URL}" | jq -sRr @uri)
-          API_URL="https://api.rss2json.com/v1/api.json?rss_url=${ENCODED_RSS_URL}&api_key=${RSS2JSON_API_KEY}"
+          RSS_URL = "https://medium.com/feed/@imehboob"
 
-          RESPONSE_FILE=$(mktemp)
-          curl --fail --silent --show-error "${API_URL}" > "${RESPONSE_FILE}"
+          request = urllib.request.Request(
+              RSS_URL,
+              headers={
+                  "User-Agent": "Mozilla/5.0 (compatible; medium-feed-updater/1.0)",
+                  "Accept": "application/rss+xml,application/xml;q=0.9,*/*;q=0.8",
+              },
+          )
 
-          jq -e '.status == "ok" and (.items | type == "array")' "${RESPONSE_FILE}" > /dev/null
+          with urllib.request.urlopen(request, timeout=30) as response:
+              rss_xml = response.read()
 
-          mkdir -p data
-          jq --arg fetchedAt "$(date -u +%Y-%m-%dT%H:%M:%SZ)" --arg source "${RSS_URL}" '
-            {
-              status: "ok",
-              fetchedAt: $fetchedAt,
-              source: $source,
-              items: (
-                .items
-                | map({
-                    title,
-                    link,
-                    pubDate,
-                    guid,
-                    thumbnail,
-                    categories
-                  })
-              )
-            }
-          ' "${RESPONSE_FILE}" > data/medium-posts.json
+          root = ET.fromstring(rss_xml)
+          ns = {
+              "media": "http://search.yahoo.com/mrss/",
+              "content": "http://purl.org/rss/1.0/modules/content/",
+          }
+
+          channel = root.find("channel")
+          items = []
+
+          if channel is not None:
+              for item in channel.findall("item"):
+                  title = (item.findtext("title") or "").strip()
+                  link = (item.findtext("link") or "").strip()
+                  pub_date = (item.findtext("pubDate") or "").strip()
+                  guid = (item.findtext("guid") or "").strip()
+
+                  categories = [
+                      (category.text or "").strip()
+                      for category in item.findall("category")
+                      if (category.text or "").strip()
+                  ]
+
+                  thumbnail = ""
+                  media_thumbnail = item.find("media:thumbnail", ns)
+                  if media_thumbnail is not None:
+                      thumbnail = (media_thumbnail.attrib.get("url") or "").strip()
+
+                  if not thumbnail:
+                      content_html = item.findtext("content:encoded", default="", namespaces=ns)
+                      match = re.search(r'<img[^>]+src=["\']([^"\']+)["\']', content_html or "", re.IGNORECASE)
+                      if match:
+                          thumbnail = match.group(1).strip()
+
+                  items.append(
+                      {
+                          "title": title,
+                          "link": link,
+                          "pubDate": pub_date,
+                          "guid": guid,
+                          "thumbnail": thumbnail,
+                          "categories": categories,
+                      }
+                  )
+
+          output = {
+              "status": "ok",
+              "fetchedAt": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
+              "source": RSS_URL,
+              "items": items,
+          }
+
+          with open("data/medium-posts.json", "w", encoding="utf-8") as f:
+              json.dump(output, f, ensure_ascii=False, indent=2)
+              f.write("\n")
+          PY
 
       - name: Commit updated feed
         run: |
