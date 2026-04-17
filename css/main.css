@@ -32,6 +32,46 @@ body {
   color: var(--text-color);
   background-color: var(--background-color);
   line-height: 1.6;
+  position: relative;
+  overflow-x: hidden;
+}
+
+body::before,
+body::after {
+  content: '';
+  position: fixed;
+  pointer-events: none;
+  z-index: 0;
+  background-repeat: no-repeat;
+  background-size: contain;
+  opacity: 0.18;
+  filter: blur(1.5px) saturate(0.9);
+}
+
+body::before {
+  top: 0;
+  right: 0;
+  width: min(34vw, 460px);
+  height: min(40vh, 460px);
+  background-image: url('../portfolio_media/image-upper.jpg');
+  background-position: top right;
+}
+
+body::after {
+  left: 0;
+  bottom: 0;
+  width: min(36vw, 500px);
+  height: min(42vh, 500px);
+  background-image: url('../portfolio_media/image-lower.jpg');
+  background-position: bottom left;
+}
+
+.page-header,
+.page-content,
+.page-footer,
+#latest-medium-posts {
+  position: relative;
+  z-index: 1;
 }
 
 h1,
@@ -177,6 +217,34 @@ section section:last-child {
   color: var(--header-text);
   padding: 3rem 0;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  position: relative;
+  overflow: hidden;
+}
+
+.page-header::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url('../portfolio_media/hero-image.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  filter: blur(3px) brightness(0.74) saturate(1.05);
+  transform: scale(1.08);
+  z-index: 0;
+}
+
+.page-header::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(8, 17, 46, 0.38), rgba(17, 24, 39, 0.34));
+  z-index: 0;
+}
+
+.page-header .container {
+  position: relative;
+  z-index: 1;
 }
 
 .header-top {

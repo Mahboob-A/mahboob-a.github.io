@@ -213,7 +213,7 @@
   }
   
   .project-card .project-description {
-    margin-top: auto;
+    margin-top: 2.5rem;
   }
   
   .project-card .project-description ul {
@@ -237,6 +237,41 @@
     height: 0.2rem;
     background-color: var(--primary-color);
     border-radius: 0.125rem;
+  }
+
+  .experience-highlights {
+    list-style-type: circle;
+    padding-left: 1.25rem;
+  }
+
+  .experience-highlights li::marker {
+    color: #111;
+    font-size: 0.85em;
+  }
+
+  .projects-section ul {
+    list-style-type: circle;
+    padding-left: 1.25rem;
+  }
+
+  .projects-section li::marker {
+    color: #111;
+    font-size: 0.85em;
+  }
+
+  .education-section ul {
+    list-style-type: circle;
+    padding-left: 1.25rem;
+  }
+
+  .education-section li::marker {
+    color: #111;
+    font-size: 0.85em;
+  }
+
+  .education-section .block {
+    font-size: 0.75em;
+    font-style: italic;
   }
     </style>
   </head>
@@ -417,60 +452,34 @@ to transition into a technical leadership role within the next five years.</p>
         <main>
           <section>
             <h2 class="section-heading">Work Experience</h2>
-            
-              <section>
-              <h3>
-                Software Engineer II at <a href="https://celltron.ae/" target="_blank">Celltron Intelligence</a>
-              </h3>
-              <p class="section-label">Nov 2025 – Present</p>
-              <p class="experience-type">Fulltime</p>
-              
-              <ul>
-                <li>Drove technical trade-offs and approvals; balanced performance, reliability, and delivery risks while enforcing
-                      development and testing standards.</li>
-                <li>Led cross-border engineering teams in Bangladesh and India; planned sprints, delegated feature ownership, enforced
-                      code reviews and CI to ensure predictable delivery..</li>
-                <li>Owned system architecture and technical direction; defined domain boundaries, API standards, data contracts, and
-                      deployment approach to enable independent service delivery.</li>
-                <li>Authored comprehensive developer runbooks and system architecture diagrams, standardizing the onboarding
-                      process and reducing knowledge silos across distributed engineering teams.</li>
-                  <li>Engineered the initial CI/CD pipelines using GitHub Actions, AWS and Docker, reducing deployment lead time
-                      from hours to minutes and enforcing automated testing gates for cross-border teams.</li>
-              </ul>
-            </section>
-          </section>
-
             <section>
               <h3>
                 Software Engineer at <a href="https://nexbell.com/" target="_blank">NexBell Inc.</a>
               </h3>
-              <p class="section-label">Nov 2024 – Nov 2025</p>
+              <p class="section-label">Nov 2024 – Present</p>
               <p class="experience-type">Fulltime</p>
               
-              <ul>
-                <li>Decoupled a monolithic codebase into modular services using Strategy and Factory patterns, significantly reducing
-                      code coupling and facilitating easier unit testing.</li>
-                <li>Optimized critical MySQL queries by implementing composite indexing, reducing query execution time by 17% and
-                      supporting low-latency analytics for 50+ concurrent vendor stores.</li>
-                <li>Redesigned the AWS infrastructure by migrating idle resources to reserved and spot instances and implementing auto-scaling
-                      policies, resulting in a 40% reduction in monthly cloud costs.</li>
-                <li>Overhauled the authentication module by implementing OAuth2 and JWT with role-based access control (RBAC),
-                      eliminating common security vulnerabilities and streamlining the user login flow.</li>
+              <ul class="experience-highlights">
+                <li><strong>Team Leadership:</strong> Owned <u>sprint planning, delegated feature ownership</u>, and enforced PR reviews and CI gates to maintain delivery rhythm and code quality.</li>
+                <li><strong>System Architecture:</strong> Defined <u> domain boundaries, API standards, and data contracts </u> to enable independent service delivery; drove technical trade-offs balancing performance, reliability, and delivery risk.</li>
+                <li><strong>Cloud Infrastructure:</strong> Migrated idle AWS resources to reserved capacity with auto-scaling policies, <u> reduced 35% cloud cost</u> and owned <u>CI/CD pipelines via Co dePipeline and Docker</u>, reducing deployment lead time from hours to minutes.</li>
+                <li><strong>Security:</strong> Overhauled the authentication module by implementing <u>OAuth2 and JWT with RBAC</u>, eliminating <u>security vulnerabilities</u> and streamlining login flows.</li>
+                <li><strong>Database Optimization:</strong> Optimized composite indexes and rewrote ORM queries on a multi-vendor MySQL system, cutting execution time by <u>17% across 50+ stores</u>.</li>
               </ul>
             </section>
             
             <section>
               <h3>
-                Software Developer at <a href="https://drive.google.com/file/d/1KBk7Md8iz_ptbG8dFaXtBVP2eKfHYkwz/view?usp=sharing"target="_blank">Innovative IT</a>
+                Software Developer at <a href="https://drive.google.com/file/d/1NOXXpvmA7ROUobhzDnrhCHFopKcp_qNS/view?usp=sharing"target="_blank">Innovative IT</a>
               </h3>
               <p class="section-label">Sept 2023 – Oct 2024</p>
-              <p class="experience-type">Freelance</p>
+              <p class="experience-type">Fulltime</p>
               
-              <ul>
-                <li>Conducted bottleneck analysis and optimized legacy database queries through indexing and query-set optimization, achieving measurable improvements in system stability and reducing average API response times.</li>
-                <li>Developed and documented production-ready RESTful APIs using Django Rest Framework (DRF), incorporating secure authentication patterns and efficient serialization logic to minimize payload sizes and latency.</li>
-                <li>Architected robust background task pipelines using Celery and Redis to handle resource-intensive operations (automated reporting, transactional emails), significantly improving frontend responsiveness by offloading non-blocking tasks.</li>
-                <li>Engineered custom Django backends for diverse client projects, implementing PostgreSQL/MySQL schemas designed for high data integrity and scalability across web and mobile platforms.</li>      
+              <ul class="experience-highlights">
+                <li><strong>Performance:</strong> Owned bottleneck diagnosis and resolution through indexing and queryset optimization, driving measurable reductions in <u>API response times</u> across client applications.</li>
+                <li><strong>API Design:</strong> Architected and owned production-ready REST APIs with DRF, enforcing secure auth patterns and optimized serialization logic for <u>low-latency data delivery</u>.</li>
+                <li><strong>Async Architecture:</strong> Designed and owned <u>Celery and Redis pipelines</u> to offload reporting workflows and background processing tasks, directly improving frontend responsiveness.</li>
+                <li><strong>Backend Engineering:</strong> Designed relational schemas and Django services built for <u>data integrity and scalability</u> across web and mobile surfaces.</li>
               </ul>
             </section>
 
@@ -481,16 +490,16 @@ to transition into a technical leadership role within the next five years.</p>
               <p class="section-label">Sept 2023 – Nov 2023</p>
               <p class="experience-type">Internship</p>
 
-              <ul>
-                <li>Enhanced platform search efficiency, boosting user search success rates by 15%.</li>
-                <li>Implemented real-time in-app chat with WebSocket, increasing user engagement and retention by 30%.</li>
-                <li>Optimized 22% of patient dashboard APIs, cutting database queries and reducing response times by 1 second.</li>
-                <li>Integrated doctor dashboard and analytics, improving data access by 20% and data-driven decisions by 15%.</li>
+              <ul class="experience-highlights">
+                <li><strong>Search Optimization:</strong> Enhanced platform search efficiency, boosting <u>user search success rates by 15%</u>.</li>
+                <li><strong>Real-Time Communication:</strong> Implemented real-time in-app chat with WebSocket, increasing <u>user engagement and retention by 30%</u>.</li>
+                <li><strong>API Performance:</strong> <u>Optimized 22% of patient dashboard APIs</u>, cutting database queries and reducing response times by 1 second.</li>
+                <li><strong>Analytics Integration:</strong> Integrated doctor dashboard and analytics, improving <u>data access by 20%</u> and data-driven decisions by 15%.</li>
               </ul>
             </section>
           </section>
 
-          <section>
+          <section class="projects-section">
             <h2 class="section-heading">Projects</h2>
             
 <section>
@@ -532,14 +541,14 @@ to transition into a technical leadership role within the next five years.</p>
   <p class="project-idea">A microservices solution for DSA problem solving platform backend just like Leetcode built from scratch without any 3rd party solution.</p>
   
   <ul>
-    <li>Architected a loosely coupled backend comprising Auth, API Service, and RCE service, communicating via
-            asynchronous message queues (RabbitMQ) to handle high-concurrency submission spikes without blocking.</li>
-    <li>Engineered a custom C++ Judge (Remote Code Execution) that spins up ephemeral Docker containers for each
+    <li><strong>Distributed Architecture:</strong> Architected a <u>loosely coupled backend comprising Auth, API Service, and RCE service</u>, communicating via
+            asynchronous message queues (RabbitMQ) to handle <u>high-concurrency submission spikes</u> without blocking.</li>
+    <li><strong>Secure Code Execution:</strong> Engineered a <u>custom C++ Judge (Remote Code Execution) that spins up ephemeral Docker containers</u> for each
             submission, isolating user code from the host OS to ensure security.</li>
-    <li>Implemented kernel-level constraints (using Docker Runtime options) to strictly limit CPU, Memory, and PIDs,
-            effectively preventing malicious attacks like fork-bombs and infinite loops.</li>
-    <li>Built the orchestration layer to manage the lifecycle of code submissions, from queuing and execution to result
-            validation (AC/WA/TLE), achieving a sub-2.5s turnaround for standard problem sets.</li>
+    <li><strong>Runtime Hardening:</strong> Implemented <u>kernel-level constraints (using Docker Runtime options)</u> to strictly limit CPU, Memory, and PIDs,
+            effectively <u>preventing malicious attacks</u> like fork-bombs and infinite loops.</li>
+    <li><strong>Submission Orchestration:</strong> Built the orchestration layer to manage the lifecycle of code submissions, from queuing and execution to result
+            validation <u>(AC/WA/TLE), achieving a sub-2.5s turnaround</u> for standard problem sets.</li>
   </ul>
   
   <div class="gallery main-gallery">
@@ -574,7 +583,80 @@ to transition into a technical leadership role within the next five years.</p>
   </div>
 </section>
 
-            
+<section>
+  <h3>
+    <a href="https://github.com/Mahboob-A/algocode/" target="_blank">Drishti AI - Eye Screening for ASHA Community Health Workers</a>
+  </h3>
+  
+  <div class="project-meta">
+    <p class="section-label">Feb 2026 - March 2026</p>
+    <div class="project-links">
+      <a href="https://github.com/Mahboob-A/drishti-ai/" class="project-link" target="_blank" rel="noopener noreferrer">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor">
+          <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8" />
+        </svg>
+        GitHub
+      </a>
+      <a href="https://imehboob.medium.com/drishti-ai-building-an-ai-eye-screening-agent-for-rural-india-in-7-days-2fc3d4ccc1fe" class="project-link" target="_blank" rel="noopener noreferrer">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor">
+          <path d="M9.025 8c0 2.485-2.02 4.5-4.513 4.5A4.506 4.506 0 0 1 0 8c0-2.486 2.02-4.5 4.512-4.5A4.506 4.506 0 0 1 9.025 8zm4.95 0c0 2.34-1.01 4.236-2.256 4.236-1.246 0-2.256-1.897-2.256-4.236 0-2.34 1.01-4.236 2.256-4.236 1.246 0 2.256 1.897 2.256 4.236zM16 8c0 2.096-.355 3.795-.794 3.795-.438 0-.793-1.7-.793-3.795 0-2.096.355-3.795.794-3.795.438 0 .793 1.699.793 3.795z"/>
+        </svg>
+        Medium
+      </a>
+      <a href="https://youtu.be/8LUT89UYnSc?si=c-cfKeLT01yo0d1m" class="project-link" target="_blank" rel="noopener noreferrer">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor">
+          <path d="M8.051 1.999h.089c.822.003 4.987.033 6.11.335a2.01 2.01 0 0 1 1.415 1.42c.101.38.172.883.22 1.402l.01.104.022.26.008.104c.065.914.073 1.77.074 1.957v.075c-.001.194-.01 1.108-.082 2.06l-.008.105-.009.104c-.05.572-.124 1.14-.235 1.558a2.01 2.01 0 0 1-1.415 1.42c-1.16.312-5.569.334-6.18.335h-.142c-.309 0-1.587-.006-2.927-.052l-.17-.006-.087-.004-.171-.007-.171-.007c-1.11-.049-2.167-.128-2.654-.26a2.01 2.01 0 0 1-1.415-1.419c-.111-.417-.185-.986-.235-1.558L.09 9.82l-.008-.104A31 31 0 0 1 0 7.68v-.123c.002-.215.01-.958.064-1.778l.007-.103.003-.052.008-.104.022-.26.01-.104c.048-.519.119-1.023.22-1.402a2.01 2.01 0 0 1 1.415-1.42c.487-.13 1.544-.21 2.654-.26l.17-.007.172-.006.086-.003.171-.007A100 100 0 0 1 7.858 2zM6.4 5.209v4.818l4.157-2.408z"/>
+        </svg>
+        Watch in Action
+      </a>
+    </div>
+  </div>
+  
+  <p class="project-tech">Django, DRF, FastAPI, Vision Agents SDK, React Native, Expo, PostgreSQL, Redis, Celery, Docker, AWS EC2, Gemini 2.5 Flash, Roboflow, MediaPipe, Stream WebRTC</p>
+  <p class="project-idea">A real-time AI eye screening system for India's ASHA community health workers, turning an Android phone into a guided examination instrument for 11 preventable eye conditions across six patient age groups.</p>
+  
+  <ul>
+    
+    <li><strong>AI Pipeline:</strong> Engineered a <u>5-layer AI pipeline over live WebRTC:</u> integrating MediaPipe (<5ms tracking), OpenCV (color scoring), local Roboflow YOLO, Moondream VQA, and Gemini 2.5 Flash for <u>sub-second voice-synthesized referrals</u>.</li>
+    <li><strong>Clinical Profiling:</strong> Designed an age-based profiling system mapping <u>11 conditions across 6 demographics</u>, dynamically injecting relevant questions into a 7-step examination protocol <u>without ophthalmologist configuration.</u></li>
+    <li><strong>Voice Agent:</strong> Built a <u>multilingual voice agent</u> using Gemini 2.5 Flash Realtime for <u>continuous Hindi/Bengali live coaching</u>, interleaved symptom triage, and automated severity summaries.</li>
+    <li><strong>Zero-Trust Security:</strong> Enforced a <u>zero-trust architecture</u> by isolating the stateless FastAPI AI service, routing database writes to PostgreSQL exclusively through secured Django internal endpoints.</li>
+    <li><strong>Observability:</strong> Implemented full observability with <u>Prometheus metrics and Grafana dashboards</u>, enabling district-level PHC monitoring of screening telemetry without exposing raw patient data.</li>
+    <li><strong>Production Deployment:</strong> Containerized an <u>8-service architecture</u> via Docker Compose (Django, FastAPI, Celery, Redis), deployed on AWS EC2 behind Nginx/SSL with an optimized AI model warm-up gate.</li>
+  </ul>
+  
+  <div class="gallery main-gallery">
+    <figure>
+      <a href="https://imehboob.medium.com/drishti-ai-building-an-ai-eye-screening-agent-for-rural-india-in-7-days-2fc3d4ccc1fe" target="_blank">
+      <img width="600"
+           height="338"
+           src="portfolio_media/drishti-ai-main-image-001.png"
+           alt="Algocode Architecture">
+      <figcaption>Drishti AI</figcaption>
+      </a>
+    </figure>
+    <figure>
+      <a href="https://youtu.be/8LUT89UYnSc?si=Hn7MCfmfp7s1Ykel&t=151" target="_blank">
+      <img width="600"
+           height="338"
+           src="portfolio_media/drishti-ai-yt-002.png"
+           alt="Code Submission Interface">
+      <figcaption>Real Time Eye Screening</figcaption>
+      </a>
+    </figure>
+    <figure>
+      <a href="https://youtu.be/8LUT89UYnSc?si=WXO49L53eZj8GjTH&t=440" target="_blank">
+      <img width="600"
+           height="338"
+           src="portfolio_media/drishti-ai-yt-003.png"
+           alt="Code Submission Interface">
+      
+      <figcaption>Real Time Visoin Agent Conversation</figcaption>
+      </a>
+    </figure>
+  </div>
+</section>
+
 <section>
   <h3>
     <a href="https://github.com/Mahboob-A/Movio/" target="_blank">Movio - VOD Platform in Microservices</a>
@@ -608,14 +690,14 @@ to transition into a technical leadership role within the next five years.</p>
   <p class="project-idea">A scalable microservices solution for video on demand platform with closed caption, DRM and data protection need just like YouTube.</p>
   
   <ul>
-    <li>Architected an event-driven video processing pipeline using Celery and RabbitMQ, offloading resource-intensive
-            transcoding tasks (FFmpeg) from the main thread to prevent blocking.</li>
-    <li>Implemented MPEG-DASH and HLS protocols with multi-bitrate transcoding, ensuring smooth playback across
+    <li><strong>Async Video Pipeline:</strong> Architected an <u>event-driven video processing pipeline</u> using Celery and RabbitMQ, offloading resource-intensive
+            transcoding tasks <u>(FFmpeg)</u> from the main thread to prevent blocking.</li>
+    <li><strong>Adaptive Streaming:</strong> Implemented <u>MPEG-DASH and HLS protocols with multi-bitrate transcoding</u>, ensuring smooth playback across
             varying bandwidths and reducing client-side buffering events.</li>
-    <li>Fully containerized the microservices architecture using Docker, ensuring consistent runtime environments across
+    <li><strong>Containerization:</strong> Fully <u>containerized the microservices architecture</u> using Docker, ensuring <u>consistent runtime environments</u> across
             development and production stages.</li>
-    <li>Secured video assets using DRM (PlayReady) and optimized global delivery via CDN caching, reducing origin
-            server load and improving Time-To-First-Byte (TTFB) by 40%.</li>
+    <li><strong>Content Security:</strong> Secured video assets using <u>DRM (PlayReady)</u> and optimized global delivery via CDN caching, reducing origin
+            server load and improving <u>Time-To-First-Byte (TTFB) by 40%.</u></li>
   </ul>
   
   <div class="gallery main-gallery">
@@ -684,11 +766,11 @@ to transition into a technical leadership role within the next five years.</p>
   <p class="project-idea">Live streaming solution for low latency video game streaming just like Twitch.</p>
   
   <ul>
-    <li>Engineered a Twitch-inspired streaming backend utilizing the Agora SD-RTNTM (Software Defined Real-time
+    <li><strong>Streaming Backend:</strong> Engineered a <u>Twitch-inspired streaming backend utilizing the Agora SD-RTN</u> (Software Defined Real-time
             Network) to deliver low-latency, one-to-many broadcasts with high throughput and global availability.</li>
-    <li>Implemented a robust security layer by building a Dynamic Token Server in Django, generating time-bound,
+    <li><strong>Access Security:</strong> Implemented a robust security layer by building a <u>Dynamic Token Server</u> in Django, generating time-bound,
             HMAC-signed access tokens for Agora channels to prevent unauthorized stream access and stream sniping.</li>
-    <li>Architected a high-concurrency chat interface using Django Channels (WebSockets) and Redis Pub/Sub, managing
+    <li><strong>Realtime Chat:</strong> Architected a high-concurrency chat interface using <u>Django Channels (WebSockets) and Redis Pub/Sub</u>, managing
             real-time viewer interaction and metadata syncing (viewer counts, stream status) outside the media stream.</li>
   </ul>
   
@@ -755,7 +837,7 @@ to transition into a technical leadership role within the next five years.</p>
     </div>
     <div class="project-description">
       <ul>
-        <li>Monolith version of <a href="https://github.com/Mahboob-A/Movio/" target="_blank">Movio</a> - a robust video on demand solution.</li>
+        <li><strong>Platform Variant:</strong> Monolith version of <a href="https://github.com/Mahboob-A/Movio/" target="_blank">Movio</a> - a <u>robust video on demand solution</u>.</li>
       </ul>
     </div>
   </div>
@@ -781,7 +863,7 @@ to transition into a technical leadership role within the next five years.</p>
   </div>
   <div class="project-description">
     <ul>
-      <li>A standalone Online Judge Solution with pure docker implementation and security best practices.</li>
+      <li><strong>Standalone Judge:</strong> A standalone Online Judge Solution with <u>just docker implementation</u> and security best practices.</li>
     </ul>
   </div>
 </div>
@@ -813,7 +895,7 @@ to transition into a technical leadership role within the next five years.</p>
     </div>
     <div class="project-description">
       <ul>
-        <li>A production AWS infrastructure with Pulumi.</li>
+        <li><strong>Infrastructure as Code:</strong> A production <u>AWS infrastructure with Pulumi</u>.</li>
       </ul>
     </div>
   </div>
@@ -839,7 +921,7 @@ to transition into a technical leadership role within the next five years.</p>
     </div>
     <div class="project-description">
       <ul>
-        <li>A robust Django-based image hosting solution.</li>
+        <li><strong>Image Platform:</strong> A <u>robust Django-based image hosting solution</u>.</li>
       </ul>
     </div>
   </div>
@@ -865,7 +947,7 @@ to transition into a technical leadership role within the next five years.</p>
     </div>
     <div class="project-description">
       <ul>
-        <li>Simulates various load balancing algorithms using Docker and Nginx.</li>
+        <li><strong>Load Balancing:</strong> Simulates various <u>load balancing algorithms</u> using Docker and Nginx.</li>
       </ul>
     </div>
   </div>
@@ -885,7 +967,7 @@ to transition into a technical leadership role within the next five years.</p>
     </div>
     <div class="project-description">
       <ul>
-        <li>A HTTP server built using Python from scratch.</li>
+        <li><strong>HTTP Fundamentals:</strong> A <u>HTTP server built using Python from scratch</u>.</li>
       </ul>
     </div>
   </div>
@@ -905,7 +987,7 @@ to transition into a technical leadership role within the next five years.</p>
     </div>
     <div class="project-description">
       <ul>
-        <li>A collection of custom implementations of rate limit algorithms.</li>
+        <li><strong>Algorithm Suite:</strong> A collection of custom implementations of <u>rate limit algorithms</u>.</li>
       </ul>
     </div>
   </div>
@@ -925,7 +1007,7 @@ to transition into a technical leadership role within the next five years.</p>
     </div>
     <div class="project-description">
       <ul>
-        <li>Custom implementation of token bucket algorithm for rate limiting using object-oriented programming principles.</li>
+        <li><strong>Token Bucket:</strong> Custom implementation of <u>token bucket algorithm</u> for rate limiting using object-oriented programming principles.</li>
       </ul>
     </div>
   </div>
@@ -945,7 +1027,7 @@ to transition into a technical leadership role within the next five years.</p>
     </div>
     <div class="project-description">
       <ul>
-        <li>A library management system built using Django, Django Rest Framework and MySQL.</li>
+        <li><strong>Library System:</strong> A <u>library management system</u> built using Django, Django Rest Framework and MySQL.</li>
       </ul>
     </div>
   </div>
@@ -971,7 +1053,7 @@ to transition into a technical leadership role within the next five years.</p>
     </div>
     <div class="project-description">
       <ul>
-        <li>An introduction to RabbitMQ for beginners with practical implementation.</li>
+        <li><strong>Messaging Basics:</strong> An introduction to <u>RabbitMQ for beginners</u> with practical implementation.</li>
       </ul>
     </div>
   </div>
@@ -991,7 +1073,7 @@ to transition into a technical leadership role within the next five years.</p>
     </div>
     <div class="project-description">
       <ul>
-        <li>A CLI tool to simulate cricket matche with best practices in object-oriented programming.</li>
+        <li><strong>CLI Simulation:</strong> A CLI tool to simulate cricket matche with <u>object-oriented programming best practices</u>.</li>
       </ul>
     </div>
   </div>
@@ -1011,7 +1093,7 @@ to transition into a technical leadership role within the next five years.</p>
     </div>
     <div class="project-description">
       <ul>
-        <li>An in-memory CLI implementation of a database mock with Python and OOP best practices.</li>
+        <li><strong>In-Memory Database:</strong> An <u>in-memory CLI implementation</u> of a database mock with Python and OOP best practices.</li>
       </ul>
     </div>
   </div>
@@ -1022,7 +1104,7 @@ to transition into a technical leadership role within the next five years.</p>
 
         <!-- Sidebar Section -->
         <aside>
-          <section>
+          <section class="education-section">
             <h2 class="section-heading">Education</h2>
             
             <section>
@@ -1033,16 +1115,16 @@ to transition into a technical leadership role within the next five years.</p>
               
               <h4>Degree</h4>
               <ul>
-                <li>Master of Computer Application</li>
+                <li><a href="https://en.wikipedia.org/wiki/Master_of_Science_in_Information_Technology" target="_blank">Master of Computer Application</a></li>
               </ul>
               
               <h4>Courses</h4>
               <ul>
                 <li>Java, Python, Android.</li>
-                <li>OS, OOD, DBMS, Networking.</li>
+                <li><u>OS, OOD, DBMS, Networking.</u></li>
                 <li>Data Analysis with R.</li>
-                <li>Software Engineering, IT Infrastructure Management.</li>
-                <li>Cloud Computing, Data Mining, Data Structures and Algorithms.</li>
+                <li>Software Engineering, <u>IT Infrastructure Management</u>.</li>
+                <li><u>Cloud Computing</u>, Data Mining, Data Structures and Algorithms.</li>
               </ul>
               
               <p>
@@ -1059,29 +1141,59 @@ to transition into a technical leadership role within the next five years.</p>
               
               <h4>Specialization</h4>
               <ul>
-                <li>Advanced Backend Engineering and Cloud Computing with AWS</li>
+                <li><a href="https://poridhi.io/course-details/67cde8a42084f7785912e1f9" target="_blank">Advanced Backend Engineering and Cloud Computing with AWS</a></li>
               </ul>
               
               <h4>Courses</h4>
               <ul>
-                <li>AWS for Scaling.</li>
-                <li>System Design Basics.</li>
-                <li>RabbitMQ as Service Bus.</li>
-                <li>Build Kafka from Scratch.</li>
+                <li><u>AWS for Scaling</u>.</li>
+                <li><u>System Design</u> Basics.</li>
+                <li>RabbitMQ as <u>Service Bus</u>.</li>
+                <li><u>Build Kafka</u> from Scratch.</li>
                 <li>Build AWS Auto-Scaler.</li>
-                <li>CI/CD for Backend Engineers.</li>
-                <li>Docker for Backend Engineers.</li>
-                <li>Database Scaling and Monitoring.</li>
+                <li><u>CI/CD</u> for Backend Engineers.</li>
+                <li><u>Docker</u> for Backend Engineers.</li>
+                <li><u>Database Scaling</u> and Monitoring.</li>
                 <li>Design a Proximity Service / Yelp.</li>
-                <li>Kubernetes for Backend Engineers.</li>
+                <li><u>Kubernetes</u> for Backend Engineers.</li>
                 <li>Socket, Redis, Rate Limit, Nginx, Load Balancer.</li>
-                <li>Linux Networking and Linux Observability with eBPF.</li>
-                <li>Tracing and Instrumentation using Opentelemetry, Jaeger, Prometheus, Dashboard using Grafana.</li>
+                <li><u>Linux Networking</u> and Linux Observability.</li>
+                <li>Tracing and Instrumentation using <u>Opentelemetry, Prometheus</u>, Dashboard using Grafana.</li>
               </ul>
               
               <p>
                 <span class="block">Mar 2024 - Aug 2025</span>
               </p>
+            </section>
+
+            <section>
+              <h3>
+                <a href="https://poridhi.io/" target="_blank">Poridhi</a>
+              </h3>
+              <p class="section-label">Bangladesh</p>
+
+              <h4>Specialization</h4>
+              <ul>
+                <li><a href="https://poridhi.io/course-details/69a090fa3a34cc047c253fb7" target="_blank">Mastering AWS & DevOps</a></li>
+              </ul>
+
+              <h4>Courses</h4>
+              <ul>
+                <li>Linux, regex/text processing, <u>networking security</u>, Bash automation, and Makefile workflows.</li>
+                <li>Docker lifecycle, image optimization, <u>storage/networking, namespaces, overlay networking,</u> and microservices.</li>
+                <li>AWS EC2/storage, <u>VPC architecture, private connectivity, DNS, load balancing</u>, Lambda, and event-driven systems.</li>
+                <li>Pulumi and Terraform (state, modules, and best practices) for <u>infrastructure as code</u>.</li>
+                <li>Ansible-based server provisioning, configuration management, and deployment automation.</li>
+                <li><u>Kubernetes core setup, deployment strategies</u>, storage, resource management, and networking internals.</li>
+                <li><u>Advanced Kubernetes with Cilium, Helm, Kustomize</u>, stateful services, and The Hard Way labs.</li>
+                <li><u>Observability stack</u> with Prometheus, Grafana, Loki, Tempo, and OpenTelemetry.</li>
+                <li>Production <u>CI/CD and GitOps with ArgoCD, GitHub Actions</u>, Jenkins, and AWS deployments.</li>
+              </ul>
+
+              <p>
+                <span class="block">Mar 2026 - Apr 2027</span>
+              </p>
+
             </section>
           </section>
 
@@ -1267,12 +1379,12 @@ to transition into a technical leadership role within the next five years.</p>
     </h3>
     <p class="section-label">Aug 2024 - Dec 2024</p>
     
-    <ul>
-      <li>Participated in effective remote communication with global participants, refined skills essential for distributed teams.</li>
-      <li>Shared ideas and perspectives confidently in diverse online discussions, nurturing inclusive collaboration.</li>
-      <li>Learned key leadership principles through interactive virtual sessions, showcasing adaptability and a proactive approach to skill development.</li>
-      <li>Presented concepts and viewpoints clearly to multicultural teams, enhancing communication and persuasive abilities.</li>
-      <li>Collaborated effectively within diverse groups, navigating varied opinions and promoted shared understanding.</li>
+    <ul class="experience-highlights">
+      <li><strong>Remote Communication:</strong> Participated in effective <u>remote communication with global participants</u>, refining skills essential for <u>distributed teams</u>.</li>
+      <li><strong>Inclusive Collaboration:</strong> Shared ideas and perspectives confidently in diverse online discussions, <u>nurturing inclusive collaboration</u>.</li>
+      <li><strong>Leadership Development:</strong> Learned key leadership principles through interactive virtual sessions, showcasing adaptability and a <u>proactive approach to skill development.</u></li>
+      <li><strong>Cross-Cultural Presentation:</strong> Presented concepts and viewpoints clearly to <u>multicultural teams</u>, enhancing communication and persuasive abilities.</li>
+      <li><strong>Team Collaboration:</strong> Collaborated effectively within diverse groups, <u>navigating varied opinions and promoting shared understanding</u>.</li>
     </ul>
   </section>
 </section>
@@ -1284,6 +1396,7 @@ to transition into a technical leadership role within the next five years.</p>
 
 <section id="latest-medium-posts">
             <h2 >Latest Medium Posts</h2>
+            <p id="medium-feed-last-updated" aria-live="polite">Last updated: Loading...</p>
             <div id="medium-posts-container">
                 Loading Medium posts...
             </div>
@@ -1292,7 +1405,7 @@ to transition into a technical leadership role within the next five years.</p>
 
     <footer class="page-footer">
       <div class="container">
-        <p>© 2025 Mahboob Alam.</p>
+        <p>© 2026 Mahboob Alam.</p>
       </div>
     </footer>
 
@@ -1302,4 +1415,3 @@ to transition into a technical leadership role within the next five years.</p>
   </body>
 </html>
 </qodoArtifact>
-

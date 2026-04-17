@@ -1,0 +1,68 @@
+name: Update Medium Feed
+
+on:
+  schedule:
+    - cron: "0 3 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  refresh-medium-feed:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Fetch Medium feed and generate JSON
+        env:
+          RSS2JSON_API_KEY: ${{ secrets.RSS2JSON_API_KEY }}
+        run: |
+          if [ -z "${RSS2JSON_API_KEY}" ]; then
+            echo "RSS2JSON_API_KEY secret is missing."
+            exit 1
+          fi
+
+          RSS_URL="https://medium.com/feed/@imehboob"
+          ENCODED_RSS_URL=$(printf '%s' "${RSS_URL}" | jq -sRr @uri)
+          API_URL="https://api.rss2json.com/v1/api.json?rss_url=${ENCODED_RSS_URL}&api_key=${RSS2JSON_API_KEY}"
+
+          RESPONSE_FILE=$(mktemp)
+          curl --fail --silent --show-error "${API_URL}" > "${RESPONSE_FILE}"
+
+          jq -e '.status == "ok" and (.items | type == "array")' "${RESPONSE_FILE}" > /dev/null
+
+          mkdir -p data
+          jq --arg fetchedAt "$(date -u +%Y-%m-%dT%H:%M:%SZ)" --arg source "${RSS_URL}" '
+            {
+              status: "ok",
+              fetchedAt: $fetchedAt,
+              source: $source,
+              items: (
+                .items
+                | map({
+                    title,
+                    link,
+                    pubDate,
+                    guid,
+                    thumbnail,
+                    categories
+                  })
+              )
+            }
+          ' "${RESPONSE_FILE}" > data/medium-posts.json
+
+      - name: Commit updated feed
+        run: |
+          if git diff --quiet -- data/medium-posts.json; then
+            echo "No Medium feed changes to commit."
+            exit 0
+          fi
+
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add data/medium-posts.json
+          git commit -m "chore: update Medium feed"
+          git push

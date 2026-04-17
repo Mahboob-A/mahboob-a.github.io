@@ -9,8 +9,15 @@
 
 #latest-medium-posts h2 {
     text-align: center;
-    margin-bottom: 30px;
+    margin-bottom: 8px;
     color: #333;
+}
+
+#medium-feed-last-updated {
+    text-align: center;
+    margin: 0 0 24px;
+    font-size: 0.9em;
+    color: #666;
 }
 
 #medium-posts-container {
