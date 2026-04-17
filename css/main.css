@@ -74,6 +74,99 @@ body::after {
   z-index: 1;
 }
 
+#vine-canopy {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+
+#vine-anchor-line {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 12px;
+  opacity: 0;
+  transform: scaleX(0.92);
+  transform-origin: center;
+  background:
+    linear-gradient(to bottom, rgba(54, 28, 19, 0.55), rgba(35, 18, 12, 0.35)),
+    repeating-linear-gradient(
+      90deg,
+      rgba(139, 74, 54, 0.42) 0 40px,
+      rgba(111, 56, 40, 0.42) 40px 42px
+    );
+  border-top: 1px solid rgba(255, 207, 183, 0.25);
+  border-bottom: 1px solid rgba(36, 18, 12, 0.45);
+  box-shadow: 0 2px 8px rgba(41, 22, 16, 0.25);
+  will-change: opacity, transform, top;
+}
+
+.vine-strand {
+  position: absolute;
+  top: 0;
+  width: 22px;
+  height: var(--vine-height, 50vh);
+  transform-origin: top center;
+  transform: translateX(-50%) scaleY(0.05);
+  opacity: 0;
+  background: transparent;
+  will-change: transform, opacity;
+  animation: vine-sway var(--sway-duration, 6.5s) ease-in-out infinite alternate;
+  animation-delay: var(--sway-delay, 0s);
+}
+
+.vine-segment {
+  position: absolute;
+  left: 50%;
+  top: var(--seg-top, 0%);
+  width: 3px;
+  height: var(--seg-height, 18px);
+  transform: translateX(calc(-50% + var(--seg-offset, 0px))) rotate(var(--seg-rot, 0deg));
+  transform-origin: top center;
+  border-radius: 999px;
+  background: linear-gradient(to bottom, rgba(52, 117, 67, 0.68), rgba(34, 90, 49, 0.35));
+  box-shadow: 0 0 4px rgba(32, 84, 46, 0.2);
+}
+
+.vine-leaf {
+  position: absolute;
+  width: var(--leaf-w, 12px);
+  height: var(--leaf-h, 18px);
+  top: var(--leaf-top, 30%);
+  left: var(--leaf-left, 50%);
+  transform: translateX(-50%) rotate(var(--leaf-rot, 25deg));
+  transform-origin: center;
+  border-radius: 65% 35% 60% 40%;
+  background: linear-gradient(135deg, rgba(78, 143, 91, 0.85), rgba(35, 98, 55, 0.5));
+  box-shadow: 0 0 3px rgba(36, 94, 52, 0.22);
+}
+
+@keyframes vine-sway {
+  from {
+    margin-left: -12px;
+    rotate: -1.2deg;
+  }
+  to {
+    margin-left: 12px;
+    rotate: 1.4deg;
+  }
+}
+
+@media (max-width: 1023px) {
+  #vine-canopy {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .vine-strand {
+    animation: none;
+  }
+}
+
 h1,
 h2,
 h3,

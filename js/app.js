@@ -11,7 +11,134 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Add active state to links
   initializeActiveLinks();
+
+  // Initialize decorative vine canopy
+  initializeVineCanopy();
 });
+
+function initializeVineCanopy() {
+  if (window.innerWidth < 1024) {
+    return;
+  }
+
+  const heroSection = document.querySelector('.page-header');
+  if (!heroSection) {
+    return;
+  }
+
+  const vineCanopy = document.createElement('div');
+  vineCanopy.id = 'vine-canopy';
+  document.body.appendChild(vineCanopy);
+
+  const anchorLine = document.createElement('div');
+  anchorLine.id = 'vine-anchor-line';
+  vineCanopy.appendChild(anchorLine);
+
+  const strandCount = 5 + Math.floor(Math.random() * 4);
+  const strands = [];
+
+  for (let index = 0; index < strandCount; index += 1) {
+    const strand = document.createElement('div');
+    strand.className = 'vine-strand';
+
+    const horizontalPercent = (index / (strandCount - 1)) * 100;
+    const horizontalOffset = (Math.random() - 0.5) * 1.4;
+    const strandHeight = 42 + Math.random() * 38;
+
+    strand.style.left = `${horizontalPercent + horizontalOffset}%`;
+    strand.style.setProperty('--vine-height', `${strandHeight}vh`);
+    strand.style.setProperty('--sway-duration', `${6 + Math.random() * 5}s`);
+    strand.style.setProperty('--sway-delay', `${Math.random() * 2.5}s`);
+
+    const segmentCount = 16 + Math.floor(Math.random() * 8);
+    for (let segmentIndex = 0; segmentIndex < segmentCount; segmentIndex += 1) {
+      const segment = document.createElement('span');
+      segment.className = 'vine-segment';
+
+      const segTop = (segmentIndex / segmentCount) * 100;
+      const segWave = Math.sin(segmentIndex * 0.78 + index * 0.31);
+      const segOffset = segWave * (4 + Math.random() * 2.5);
+      const segRot = segWave * (11 + Math.random() * 8);
+
+      segment.style.setProperty('--seg-top', `${segTop}%`);
+      segment.style.setProperty('--seg-offset', `${segOffset.toFixed(2)}px`);
+      segment.style.setProperty('--seg-rot', `${segRot.toFixed(2)}deg`);
+      segment.style.setProperty('--seg-height', `${13 + Math.random() * 7}px`);
+
+      strand.appendChild(segment);
+    }
+
+    const leafCount = 4 + Math.floor(Math.random() * 4);
+    for (let leafIndex = 0; leafIndex < leafCount; leafIndex += 1) {
+      const leaf = document.createElement('span');
+      leaf.className = 'vine-leaf';
+
+      const topPercent = 10 + (leafIndex / (leafCount + 1)) * 80 + (Math.random() * 6 - 3);
+      const sideOffset = (leafIndex % 2 === 0 ? -1 : 1) * (6 + Math.random() * 7);
+      const rotation = (leafIndex % 2 === 0 ? -1 : 1) * (18 + Math.random() * 30);
+
+      leaf.style.setProperty('--leaf-top', `${topPercent}%`);
+      leaf.style.setProperty('--leaf-left', `${50 + sideOffset}%`);
+      leaf.style.setProperty('--leaf-rot', `${rotation}deg`);
+      leaf.style.setProperty('--leaf-w', `${9 + Math.random() * 4}px`);
+      leaf.style.setProperty('--leaf-h', `${14 + Math.random() * 7}px`);
+
+      strand.appendChild(leaf);
+    }
+
+    vineCanopy.appendChild(strand);
+    strands.push(strand);
+  }
+
+  const getProgress = () => {
+    const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+    if (maxScroll <= 0) {
+      return 0;
+    }
+
+    const heroEnd = heroSection.offsetTop + heroSection.offsetHeight;
+    const start = Math.max(0, heroEnd - window.innerHeight * 0.08);
+    const revealDistance = Math.min(Math.max(900, window.innerHeight * 1.35), Math.max(900, maxScroll - start));
+
+    return Math.min(1, Math.max(0, (window.scrollY - start) / revealDistance));
+  };
+
+  let ticking = false;
+
+  const updateStrands = () => {
+    const progress = getProgress();
+    const heroRect = heroSection.getBoundingClientRect();
+    const anchorTop = Math.max(0, Math.min(window.innerHeight * 0.33, heroRect.bottom));
+
+    anchorLine.style.top = `${anchorTop}px`;
+    anchorLine.style.opacity = `${progress * 0.92}`;
+    anchorLine.style.transform = `scaleX(${0.92 + progress * 0.08})`;
+
+    strands.forEach((strand, index) => {
+      const threshold = index / (strandCount - 1);
+      const activationWindow = 0.2;
+      const local = Math.min(1, Math.max(0, (progress - threshold * 0.52) / activationWindow));
+
+      strand.style.opacity = `${local * 0.95}`;
+      strand.style.top = `${anchorTop + 10}px`;
+      strand.style.transform = `translateX(-50%) scaleY(${0.05 + local * 0.95})`;
+    });
+  };
+
+  const onScroll = () => {
+    if (!ticking) {
+      ticking = true;
+      window.requestAnimationFrame(() => {
+        updateStrands();
+        ticking = false;
+      });
+    }
+  };
+
+  updateStrands();
+  window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('resize', onScroll);
+}
 
 /**
  * Initialize animations for various elements
