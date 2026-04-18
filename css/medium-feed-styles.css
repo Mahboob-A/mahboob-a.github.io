@@ -3,7 +3,7 @@
 #latest-medium-posts {
     margin-top: 40px; /* Adjust spacing as needed */
     padding: 20px;
-    background-color: #f9f9f9; /* Optional: light background for the section */
+    background-color: transparent; /* Use main body background */
     border-radius: 8px;
 }
 
@@ -29,8 +29,8 @@
 
 /* Style for each individual post item */
 .medium-post-item {
-    background-color: #fff;
-    border: 1px solid #eee;
+    background-color: transparent;
+    border: 1px solid rgba(0, 0, 0, 0.1);
     border-radius: 8px;
     padding: 20px;
     box-shadow: 0 2px 5px rgba(0,0,0,0.05);
@@ -47,12 +47,14 @@
 
 .medium-post-item h3 a {
     text-decoration: none;
-    color: #0077cc; /* Medium's typical link color */
+    color: #3d5afe;
     transition: color 0.3s ease;
 }
 
+
+
 .medium-post-item h3 a:hover {
-    color: #005fa3; /* Darker on hover */
+    color: #0031ca;
     text-decoration: underline;
 }
 
@@ -69,7 +71,7 @@
 }
 
 .medium-post-item .post-link a {
-    color: #0077cc; /* Link color */
+    color: #3d5afe;
     text-decoration: none;
     font-weight: bold;
 }
