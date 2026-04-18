@@ -30,7 +30,25 @@
 body {
   font-family: 'Nunito', sans-serif;
   color: var(--text-color);
-  background-color: var(--background-color);
+  background-color: #edf6ec;
+
+  /* lighter color profile */
+  /* background-color: #f7fbf6; */
+  
+  background-image:
+  linear-gradient(rgba(238, 246, 235, 0.86), rgba(238, 246, 235, 0.87)),
+  radial-gradient(circle at 18% 12%, rgba(82, 138, 92, 0.2), transparent 52%),
+  radial-gradient(circle at 84% 78%, rgba(69, 118, 80, 0.12), transparent 48%),
+
+    /* lighter color profile*/
+      /* linear-gradient(rgba(246, 251, 244, 0.92), rgba(246, 251, 244, 0.93)),
+        radial-gradient(circle at 18% 12%, rgba(128, 182, 136, 0.12), transparent 55%),
+        radial-gradient(circle at 84% 78%, rgba(110, 164, 121, 0.08), transparent 50%), */
+    url('../portfolio_media/main-body-image.jpg');
+  background-repeat: no-repeat, no-repeat, no-repeat, no-repeat;
+  background-size: auto, auto, auto, cover;
+  background-position: center, center, center, center top;
+  background-attachment: fixed;
   line-height: 1.6;
   position: relative;
   overflow-x: hidden;
@@ -66,6 +84,12 @@ body::after {
   background-position: bottom left;
 }
 
+@media (max-width: 900px) {
+  body {
+    background-attachment: scroll;
+  }
+}
+
 .page-header,
 .page-content,
 .page-footer,
@@ -80,6 +104,10 @@ body::after {
   pointer-events: none;
   z-index: 0;
   overflow: hidden;
+  --wind-force: 0;
+  --wind-direction: 0;
+  --wind-shift: calc(var(--wind-force) * 14px);
+  --wind-tilt: calc(var(--wind-force) * 1.7deg);
 }
 
 #vine-anchor-line {
@@ -87,48 +115,60 @@ body::after {
   left: 0;
   top: 0;
   width: 100%;
-  height: 12px;
+  height: 11px;
   opacity: 0;
   transform: scaleX(0.92);
   transform-origin: center;
   background:
-    linear-gradient(to bottom, rgba(54, 28, 19, 0.55), rgba(35, 18, 12, 0.35)),
+    linear-gradient(to bottom, rgba(66, 44, 26, 0.58), rgba(43, 30, 19, 0.45)),
     repeating-linear-gradient(
       90deg,
-      rgba(139, 74, 54, 0.42) 0 40px,
-      rgba(111, 56, 40, 0.42) 40px 42px
+      rgba(137, 92, 60, 0.35) 0 34px,
+      rgba(98, 64, 42, 0.38) 34px 36px
     );
-  border-top: 1px solid rgba(255, 207, 183, 0.25);
-  border-bottom: 1px solid rgba(36, 18, 12, 0.45);
-  box-shadow: 0 2px 8px rgba(41, 22, 16, 0.25);
+  border-top: 1px solid rgba(255, 224, 200, 0.25);
+  border-bottom: 1px solid rgba(37, 24, 15, 0.46);
+  box-shadow: 0 2px 10px rgba(33, 22, 14, 0.24);
   will-change: opacity, transform, top;
 }
 
 .vine-strand {
   position: absolute;
   top: 0;
-  width: 22px;
+  width: 30px;
   height: var(--vine-height, 50vh);
   transform-origin: top center;
-  transform: translateX(-50%) scaleY(0.05);
+  transform: translateX(-50%) scaleY(0.06);
   opacity: 0;
   background: transparent;
   will-change: transform, opacity;
-  animation: vine-sway var(--sway-duration, 6.5s) ease-in-out infinite alternate;
+}
+
+.vine-cable {
+  position: absolute;
+  inset: 0;
+  transform-origin: top center;
+  animation: vine-sway var(--sway-duration, 10s) cubic-bezier(0.43, 0.02, 0.42, 0.98) infinite;
   animation-delay: var(--sway-delay, 0s);
+  filter: saturate(calc(0.92 + var(--strand-depth, 1) * 0.15));
 }
 
 .vine-segment {
   position: absolute;
   left: 50%;
   top: var(--seg-top, 0%);
-  width: 3px;
+  width: var(--seg-width, 2px);
   height: var(--seg-height, 18px);
   transform: translateX(calc(-50% + var(--seg-offset, 0px))) rotate(var(--seg-rot, 0deg));
   transform-origin: top center;
   border-radius: 999px;
-  background: linear-gradient(to bottom, rgba(52, 117, 67, 0.68), rgba(34, 90, 49, 0.35));
-  box-shadow: 0 0 4px rgba(32, 84, 46, 0.2);
+  background: linear-gradient(
+    to bottom,
+    hsla(111, 25%, var(--seg-shade-light, 46%), var(--seg-alpha-light, 0.72)),
+    hsla(112, 28%, var(--seg-shade, 36%), var(--seg-alpha, 0.56)),
+    hsla(116, 30%, var(--seg-shade-dark, 26%), var(--seg-alpha-dark, 0.46))
+  );
+  box-shadow: 0 0 4px hsla(110, 35%, 22%, 0.14);
 }
 
 .vine-leaf {
@@ -137,21 +177,83 @@ body::after {
   height: var(--leaf-h, 18px);
   top: var(--leaf-top, 30%);
   left: var(--leaf-left, 50%);
-  transform: translateX(-50%) rotate(var(--leaf-rot, 25deg));
+  transform: translateX(-50%);
   transform-origin: center;
-  border-radius: 65% 35% 60% 40%;
-  background: linear-gradient(135deg, rgba(78, 143, 91, 0.85), rgba(35, 98, 55, 0.5));
-  box-shadow: 0 0 3px rgba(36, 94, 52, 0.22);
+  pointer-events: none;
+}
+
+.vine-leaf-blade {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 100%;
+  transform: rotate(var(--leaf-rot, 22deg));
+  transform-origin: 50% 16%;
+  clip-path: polygon(50% 100%, 0 44%, 16% 18%, 50% 31%, 84% 18%, 100% 44%);
+  border-radius: 45% 45% 62% 62%;
+  background:
+    radial-gradient(circle at 36% 31%, hsla(94, 57%, 92%, 0.32) 0 20%, transparent 45%),
+    linear-gradient(
+      150deg,
+      hsl(var(--leaf-hue, 110), var(--leaf-sat, 46%), calc(var(--leaf-light, 42%) + 8%)),
+      hsl(var(--leaf-hue, 110), var(--leaf-sat, 42%), var(--leaf-light, 42%)) 48%,
+      hsl(calc(var(--leaf-hue, 110) + 6), calc(var(--leaf-sat, 46%) - 8%), var(--leaf-dark, 30%))
+    );
+  border: 1px solid hsla(114, 32%, 26%, 0.34);
+  box-shadow:
+    inset 1px -1px 3px rgba(16, 50, 26, 0.16),
+    0 1px 3px rgba(14, 58, 28, 0.2);
+  animation: leaf-flutter var(--leaf-duration, 5.5s) ease-in-out infinite;
+  animation-delay: var(--leaf-delay, 0s);
+}
+
+.vine-leaf-blade::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 22%;
+  width: 1px;
+  height: 62%;
+  background: linear-gradient(to bottom, rgba(238, 255, 234, 0.5), rgba(221, 255, 212, 0.04));
+  transform: translateX(-50%);
+}
+
+.vine-leaf-blade::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: -5%;
+  width: 40%;
+  height: 18%;
+  background: rgba(23, 70, 33, 0.2);
+  border-radius: 0 0 100% 100%;
+  transform: translateX(-50%);
 }
 
 @keyframes vine-sway {
-  from {
-    margin-left: -12px;
-    rotate: -1.2deg;
+  0% {
+    transform: translateX(calc(var(--sway-span, 10px) * -1 + var(--wind-shift))) rotate(calc(var(--tilt-span, 2deg) * -1 + var(--wind-tilt)));
   }
-  to {
-    margin-left: 12px;
-    rotate: 1.4deg;
+  50% {
+    transform: translateX(calc(var(--sway-span, 10px) * 0.45 + (var(--wind-shift) * 0.55))) rotate(calc(var(--tilt-span, 2deg) * 0.45 + (var(--wind-tilt) * 0.65)));
+  }
+  100% {
+    transform: translateX(calc(var(--sway-span, 10px) + var(--wind-shift))) rotate(calc(var(--tilt-span, 2deg) + var(--wind-tilt)));
+  }
+}
+
+@keyframes leaf-flutter {
+  0% {
+    transform: rotate(calc(var(--leaf-rot, 22deg) - 5deg + (var(--wind-tilt) * 0.45))) scale(1);
+  }
+  38% {
+    transform: rotate(calc(var(--leaf-rot, 22deg) + 4deg + (var(--wind-tilt) * 0.65))) scale(calc(1 + var(--leaf-pop, 1) * 0.018));
+  }
+  72% {
+    transform: rotate(calc(var(--leaf-rot, 22deg) - 2deg + (var(--wind-tilt) * 0.38))) scale(0.992);
+  }
+  100% {
+    transform: rotate(calc(var(--leaf-rot, 22deg) - 5deg + (var(--wind-tilt) * 0.45))) scale(1);
   }
 }
 
@@ -162,7 +264,8 @@ body::after {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .vine-strand {
+  .vine-cable,
+  .vine-leaf-blade {
     animation: none;
   }
 }
