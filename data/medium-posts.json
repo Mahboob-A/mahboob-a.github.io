@@ -1,8 +1,22 @@
 {
   "status": "ok",
-  "fetchedAt": "2026-05-12T06:09:48Z",
+  "fetchedAt": "2026-05-13T06:23:04Z",
   "source": "https://medium.com/feed/@imehboob",
   "items": [
+    {
+      "title": "SQL JOINs in PostgreSQL: Query Across Multiple Tables and Actually Understand What You Are Asking |…",
+      "link": "https://imehboob.medium.com/sql-joins-in-postgresql-query-across-multiple-tables-and-actually-understand-what-you-are-asking-6b4dec98cd5c?source=rss-e5c62f42f962------2",
+      "pubDate": "2026-05-12 10:48:09",
+      "guid": "https://medium.com/p/6b4dec98cd5c",
+      "thumbnail": "",
+      "categories": [
+        "sql",
+        "sql-joins",
+        "postgresql",
+        "mystery",
+        "database"
+      ]
+    },
     {
       "title": "Install &amp; Setup PostgreSQL, Creating Tables, and CRUD Operations | Part 1",
       "link": "https://imehboob.medium.com/install-setup-postgresql-creating-tables-and-crud-operations-part-1-5fe1bed693d2?source=rss-e5c62f42f962------2",
@@ -127,20 +141,6 @@
         "linux",
         "kubernetes",
         "networking"
-      ]
-    },
-    {
-      "title": "AWS Networking 101 by Deploying A Bastion Server for Dummies",
-      "link": "https://imehboob.medium.com/aws-networking-101-by-deploying-a-bastion-server-for-dummies-5458cd3a97b6?source=rss-e5c62f42f962------2",
-      "pubDate": "2025-01-18 14:18:09",
-      "guid": "https://medium.com/p/5458cd3a97b6",
-      "thumbnail": "",
-      "categories": [
-        "servers",
-        "aws",
-        "networking",
-        "cloud-computing",
-        "infra"
       ]
     }
   ]
