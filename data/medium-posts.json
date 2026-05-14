@@ -1,8 +1,22 @@
 {
   "status": "ok",
-  "fetchedAt": "2026-05-13T06:23:04Z",
+  "fetchedAt": "2026-05-14T06:19:35Z",
   "source": "https://medium.com/feed/@imehboob",
   "items": [
+    {
+      "title": "Aggregations &amp; Grouping in SQL: The Queries Behind Every Dashboard and Report | Part 3",
+      "link": "https://imehboob.medium.com/aggregations-grouping-in-sql-the-queries-behind-every-dashboard-and-report-part-3-9bd1ce9bd6a0?source=rss-e5c62f42f962------2",
+      "pubDate": "2026-05-13 15:09:03",
+      "guid": "https://medium.com/p/9bd1ce9bd6a0",
+      "thumbnail": "",
+      "categories": [
+        "postgresql",
+        "data-science",
+        "ai",
+        "data-analysis",
+        "mysql"
+      ]
+    },
     {
       "title": "SQL JOINs in PostgreSQL: Query Across Multiple Tables and Actually Understand What You Are Asking |…",
       "link": "https://imehboob.medium.com/sql-joins-in-postgresql-query-across-multiple-tables-and-actually-understand-what-you-are-asking-6b4dec98cd5c?source=rss-e5c62f42f962------2",
@@ -127,20 +141,6 @@
         "deep-learning",
         "docker",
         "kernel"
-      ]
-    },
-    {
-      "title": "Linux Networking — Your Hands on Guide to Understand How Docker Works | Part 1",
-      "link": "https://imehboob.medium.com/linux-networking-your-hands-on-guide-to-understand-how-docker-works-part-1-fbf2b6cef06f?source=rss-e5c62f42f962------2",
-      "pubDate": "2025-03-08 11:52:28",
-      "guid": "https://medium.com/p/fbf2b6cef06f",
-      "thumbnail": "",
-      "categories": [
-        "docker",
-        "containers",
-        "linux",
-        "kubernetes",
-        "networking"
       ]
     }
   ]
